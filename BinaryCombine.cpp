@@ -48,20 +48,10 @@ void binaryAdd(std::string num1, std::string num2){ //1010 0101 //ПЕРЕПИШ
     number1 = binaryToDecimal(num1);
     number2 = binaryToDecimal(num2);
     
-    if (number1 > number2){
-        temp = number1 - number2;
-        if(temp > number2){
-            std::cout << "ПЕРЕПОВНЕННЯ. ЧИСЛА ЗАВЕЛИКІ";
-            return;
-        }
-    } else if(number2 > number1){
-        temp = number2 - number1;
-        if (temp > number1){
-            std::cout << "ПЕРЕПОВНЕННЯ. ЧИСЛА ЗАВЕЛИКІ";
-            return;
-        }
+    if(number1 > (maximal - number2)){
+        std::cout <<"Overflow, numbers too large" << '\n';
+        return;
     }
-
 
     result = number1 + number2;
 
@@ -69,11 +59,9 @@ void binaryAdd(std::string num1, std::string num2){ //1010 0101 //ПЕРЕПИШ
     std::cout << std::setw(32) << num2 << '\n';
     std::cout << std::setfill('-')<< std::setw(33) << '\n'; // Розділювач. З невідомих причин звідкись береться ще один символ, і при значенні зсуву в 32, рівняється на один символ лівіше.
     std::cout << std::setfill(' ') << std::setw(33) << decimalToBinary(number1 + number2);
-    
 }
 
 
 int main(){
-    binaryAdd("0111 1111 1111 1111","0111 1111 1111 1111");
-    // std::cout << decimalToBinary(32767);
+    binaryAdd("1111 1111 1111 1111","1111 1111 1111 1111");
 }
